@@ -7,7 +7,7 @@ const doc = {
     description:
       'Vehicles API documentation. You can test this API directly here!',
   },
-  host: 'cse-341-h18v.onrender.com',
+  host: 'byu-cse-341-inventory-management.onrender.com',
   basePath: '/',
   schemes: ['https'],
   consumes: ['application/json'],

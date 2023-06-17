@@ -1,6 +1,6 @@
 ###
 # @name createVehicle
-POST https://cse-341-h18v.onrender.com/vehicle HTTP/1.1
+POST https://byu-cse-341-inventory-management.onrender.com/vehicle HTTP/1.1
 Content-Type: application/json
 
 {
@@ -18,5 +18,28 @@ Content-Type: application/json
 
 ###
 # @name getVehicles
-GET https://cse-341-h18v.onrender.com/vehicle HTTP/1.1
+GET https://byu-cse-341-inventory-management.onrender.com/vehicle HTTP/1.1
+Content-Type: application/json
+
+###
+# @name udpateVehicle
+PUT https://byu-cse-341-inventory-management.onrender.com/vehicle/648d31c8c7d5d67c684da1d5 HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Fusca",
+  "make": "Volkswagen",
+  "year": 1969,
+  "color": "red",
+  "stock": 1,
+  "price": 10000,
+  "sold": false,
+  "description": "Fusca 1969",
+  "category": "classic",
+  "buyer": "Vitor"
+}
+
+###
+# @name deleteVehicle
+DELETE https://byu-cse-341-inventory-management.onrender.com/vehicle/648d31c8c7d5d67c684da1d5 HTTP/1.1
 Content-Type: application/json

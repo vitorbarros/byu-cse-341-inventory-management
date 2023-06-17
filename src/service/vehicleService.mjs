@@ -37,4 +37,38 @@ export default class VehicleService {
     this.vehicle = new Vehicle({});
     return this.vehicle.findAll();
   };
+
+  update = ({
+    id,
+    name,
+    make,
+    year,
+    color,
+    stock,
+    price,
+    sold,
+    description,
+    category,
+    buyer,
+  }) => {
+    this.vehicle = new Vehicle({
+      name,
+      make,
+      year,
+      color,
+      stock,
+      price,
+      sold,
+      description,
+      category,
+      buyer,
+    });
+
+    return this.vehicle.update({ id });
+  };
+
+  delete = ({ id }) => {
+    this.vehicle = new Vehicle({});
+    return this.vehicle.delete({ id });
+  };
 }

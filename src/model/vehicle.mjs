@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb';
 import client from '../infra/database/mongodb.mjs';
 import envs from '../config/envs.mjs';
 
@@ -49,4 +50,32 @@ export default class Vehicle {
 
     return cursor.toArray();
   };
+
+  update = async ({ id }) =>
+    client
+      .db(envs.MONGO_DB_NAME)
+      .collection(this.collection)
+      .updateOne(
+        { _id: new ObjectId(id) },
+        {
+          $set: {
+            name: this.name,
+            make: this.make,
+            year: this.year,
+            color: this.color,
+            stock: this.stock,
+            price: this.price,
+            sold: this.sold,
+            description: this.description,
+            category: this.category,
+            buyer: this.buyer,
+          },
+        },
+      );
+
+  delete = ({ id }) =>
+    client
+      .db(envs.MONGO_DB_NAME)
+      .collection(this.collection)
+      .deleteOne({ _id: new ObjectId(id) });
 }

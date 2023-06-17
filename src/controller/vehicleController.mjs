@@ -4,9 +4,6 @@ export default class VehicleController {
   }
 
   create = async (req, res) => {
-    const isInvalidString = (property) =>
-      !req.body[property] || typeof req.body[property] !== 'string';
-
     if (!req.body) {
       return res.status(400).json({ message: 'Invalid body' });
     }
@@ -26,7 +23,7 @@ export default class VehicleController {
     let invalidProperty = null;
 
     requiredProperties.forEach((property) => {
-      if (isInvalidString(property)) {
+      if (req.body[property] === undefined) {
         invalidProperty = property;
       }
     });
@@ -71,5 +68,57 @@ export default class VehicleController {
     }
 
     return res.status(200).json(vehicles);
+  };
+
+  update = async (req, res) => {
+    if (!req.params.id) {
+      return res.status(400).json({ message: 'Invalid id' });
+    }
+
+    const {
+      name,
+      make,
+      year,
+      color,
+      stock,
+      price,
+      sold,
+      description,
+      category,
+    } = req.body;
+
+    try {
+      await this.vehicleService.update({
+        id: req.params.id,
+        buyer: req.body?.buyer ? req.body.buyer : '',
+        name,
+        make,
+        year,
+        color,
+        stock,
+        price,
+        sold,
+        description,
+        category,
+      });
+
+      return res.status(204).json({});
+    } catch (e) {
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  };
+
+  delete = async (req, res) => {
+    if (!req.params.id) {
+      return res.status(400).json({ message: 'Invalid id' });
+    }
+
+    try {
+      await this.vehicleService.delete({ id: req.params.id });
+
+      return res.status(200).json({ message: 'Vehicle deleted' });
+    } catch (e) {
+      return res.status(500).json({ message: 'Internal server error' });
+    }
   };
 }

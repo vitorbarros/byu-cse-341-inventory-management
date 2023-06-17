@@ -5,7 +5,7 @@
     "title": "Vehicles Management API",
     "description": "Vehicles API documentation. You can test this API directly here!"
   },
-  "host": "cse-341-h18v.onrender.com",
+  "host": "byu-cse-341-inventory-management.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -77,6 +77,84 @@
       "get": {
         "description": "",
         "parameters": [],
+        "responses": {}
+      }
+    },
+    "/vehicle/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Vehicle id to be updated"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Update vehicle payload",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Fusca"
+                },
+                "make": {
+                  "type": "string",
+                  "example": "Volkswagen"
+                },
+                "year": {
+                  "type": "number",
+                  "example": 1969
+                },
+                "color": {
+                  "type": "string",
+                  "example": "red"
+                },
+                "stock": {
+                  "type": "number",
+                  "example": 1
+                },
+                "price": {
+                  "type": "number",
+                  "example": 10000
+                },
+                "sold": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Fusca 1969"
+                },
+                "category": {
+                  "type": "string",
+                  "example": "classic"
+                },
+                "buyer": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Vehicle id to be deleted"
+          }
+        ],
         "responses": {}
       }
     }
