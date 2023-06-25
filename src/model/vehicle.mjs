@@ -42,6 +42,18 @@ export default class Vehicle {
       buyer: this.buyer,
     });
 
+  findBy = ({ field, value }) => {
+    let parsedValue = value;
+    if (field === '_id') {
+      parsedValue = new ObjectId(value);
+    }
+
+    return client
+      .db(envs.MONGO_DB_NAME)
+      .collection(this.collection)
+      .findOne({ [field]: parsedValue });
+  };
+
   findAll = async () => {
     const cursor = await client
       .db(envs.MONGO_DB_NAME)

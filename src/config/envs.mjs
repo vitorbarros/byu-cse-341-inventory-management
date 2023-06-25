@@ -1,4 +1,7 @@
 export default {
   MONGO_DB_URI: process.env.MONGO_DB_URI,
   MONGO_DB_NAME: process.env.MONGO_DB_NAME,
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+  SESSION_SECRET: process.env.SESSION_SECRET,
 };

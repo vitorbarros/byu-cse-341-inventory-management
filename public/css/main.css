@@ -1,0 +1,14 @@
+.login-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+}

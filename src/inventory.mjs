@@ -1,11 +1,11 @@
 import express from 'express';
 import vehicleFactory from './factory/vehicleFactory.mjs';
 
-const router = express.Router();
+const inventory = express.Router();
 
 const vFactory = vehicleFactory();
 
-router.post('/vehicle', (req, res) =>
+inventory.post('/vehicle', (req, res) =>
   /* #swagger.parameters['obj'] = {
       in: 'body',
       description: 'Create vehicle payload',
@@ -25,9 +25,9 @@ router.post('/vehicle', (req, res) =>
   vFactory.create(req, res),
 );
 
-router.get('/vehicle', (req, res) => vFactory.findAll(req, res));
+inventory.get('/vehicle', (req, res) => vFactory.findAll(req, res));
 
-router.put('/vehicle/:id', (req, res) =>
+inventory.put('/vehicle/:id', (req, res) =>
   // #swagger.parameters['id'] = { description: 'Vehicle id to be updated' }
   /* #swagger.parameters['obj'] = {
       in: 'body',
@@ -47,9 +47,11 @@ router.put('/vehicle/:id', (req, res) =>
   } */
   vFactory.update(req, res),
 );
-router.delete('/vehicle/:id', (req, res) =>
+inventory.delete('/vehicle/:id', (req, res) =>
   // #swagger.parameters['id'] = { description: 'Vehicle id to be deleted' }
   vFactory.delete(req, res),
 );
 
-export default router;
+inventory.get('/vehicle', (req, res) => res.render('vehicle'));
+
+export default inventory;
