@@ -23,6 +23,7 @@ const __dirname = path.dirname(__filename);
 
 import swaggerFile from './src/doc/swagger-output.json' assert { type: "json" };
 import envs from './src/config/envs.mjs';
+import dashboard from './src/dashboard.mjs';
 
 const app = express();
 
@@ -39,9 +40,7 @@ app.use(passport.session({}));
 
 app.use(express.json());
 
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
+app.use(morgan('dev'));
 
 app.engine('.hbs', engine({
   extname: '.hbs',
@@ -70,6 +69,7 @@ app.set('views', './src/views');
 app.use(oauth2);
 app.use(login);
 app.use(inventory);
+app.use(dashboard);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 

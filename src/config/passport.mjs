@@ -20,4 +20,11 @@ export default (passport) => {
   passport.deserializeUser((userData, done) => {
     done(null, userData);
   });
+  passport.serializeUser((user, done) => {
+    if (user.insertedId) {
+      return done(null, user.insertedId.toString());
+    }
+
+    return done(null, user._id.toString());
+  });
 };

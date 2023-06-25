@@ -24,5 +24,6 @@ module.exports = {
     }],
     'no-console': 'off',
     'prettier/prettier': ['error'],
+    'no-underscore-dangle': 'off',
   },
 };
